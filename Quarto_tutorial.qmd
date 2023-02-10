@@ -200,4 +200,7 @@ For more see: [Quarto Chapter on Figures](https://quarto.org/docs/authoring/figu
 
 1: Download all the requisite software.
 
-2: Take 1 of your current projects (class or paper), that includes some figures and prefferrably some analysis and create a simple quarto file.
+2: Find this tutorial on github and download it so that you can
+examine the sourcecode
+
+3: Take 1 of your current projects (class or paper), that includes some figures and some analysis and create a simple quarto file.
