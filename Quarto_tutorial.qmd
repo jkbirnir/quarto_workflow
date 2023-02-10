@@ -1,0 +1,203 @@
+---
+title: "Basic quarto tutorial for 729B"
+author: "Birnir"
+format: html
+editor: source
+number-sections: true
+---
+
+```{=html}
+<!-- Any notes to self not to be rendered in the final document can be placed in 
+in the text in this way -->
+```
+#### Packages
+
+<!-- Headings and subheadings are denoted with the number of "#" -->
+
+Install and load the following packages for this tutorial
+
+library(tidyverse)
+
+```{r}
+#| label: load-packages
+#| include: false
+
+library(tidyverse)
+
+```
+
+<!-- "#| include: false" supresses the code in the rendered document -->
+
+# What is Quarto {#sec-What_is}
+
+Quarto is the "new" version of RMarkdown. Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see [The Quarto Website](http://quarto.org). <!-- Did you notice how easily we hyperlinked the website in the document -->
+
+The principal advantage of quarto over RMarkdown is that it will be maintained going forward (RMarkdown will not) and it accommodates languages other than R, so that when you venture into learning Python or other coding languages it can accommodate your needs.
+
+The content of this basic tutorial is as follows:
+
+**What is Quarto:** @sec-What_is
+
+**Getting started with Quarto:** @sec-Getting_started
+
+|   **Using Quarto:** @sec-Using
+
+**Basic Quarto:** @sec-Basics
+
+|   **New document:** @sec-New
+
+|   **Quarto document content:** @sec-content
+
+|       **Text:** @sec-Text
+
+|       **Code:** @sec-Code
+
+|       **Figures:** @sec-Figures
+
+**Assignment:** @sec-Assignment
+
+```{=html}
+<!-- Did you notice how easily we cross-referenced the various sections above, in addition to sections, figures, tables and code can be cross-referenced easily in Quarto.  For more see [Quarto Cross Referencing](https://quarto.org/docs/authoring/cross-references.html) 
+Did you also notice how we indented using | at the beginning of a line.  For more see [RBookdown](https://bookdown.org/yihui/rmarkdown-cookbook/indent-text.html)-->
+```
+# Getting started with Quarto {#sec-Getting_started}
+
+Begin by going to the Quarto webpage: [The Quarto Website](http://quarto.org). From there, download the version for your operating system.
+
+Once downloaded, go into your RStudio, then to preferences, then to the RMarkdown tab. Once there you can enable Quarto.
+
+Once Quarto is enabled, you can create new Quarto documents by going to File\>New File\>Quarto Document.
+
+## Using Quarto {#sec-Using}
+
+For some basic Quarto see this very helpful cheatsheet on [Quarto Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+
+The [Quarto Website Guide](https://quarto.org/docs/guide/) provides a pretty comprehensive guide to its functionality.
+
+Furthermore, once installed, Quarto can be used similarly to RMarkdown. Therefore, any information you don't find on the Quarto website is likely found in one of these guides:[The RMarkdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/), [The RMarkdown Bookdown](https://bookdown.org/yihui/bookdown/), or [RStudio Guide to RMarkdown](https://rmarkdown.rstudio.com/), and for quick tips see [RMarkdown tips](https://appsilon.com/r-markdown-tips/).
+
+For an extended tutorial on how to use Quarto in R studio see, for example, this [Quarto tutorial](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+Below you will be guided through enough basics to get you started. Then you can use the above guides to learn more.
+
+# Basic Quarto {#sec-Basics}
+
+## New document {#sec-New}
+
+To begin a new document go to File \> New File \> Quarto Document The document file will have the extension qmd
+
+## Quarto document content {#sec-content}
+
+A Quarto document can contain text and code. It can also include images that are embedded or otherwise rendered.
+
+### Text {#sec-Text}
+
+Text can be written directly into the document and will be rendered properly as shown here when the format is html or pdf.
+
+Text can also be written into the Quarto document in LaTeX. However, the below LateX examples will only render in pdf (see source for the actual code)
+
+```{=latex}
+\begin{itemize}
+\item Example  
+\item Text can be written in LaTeX code that will be preserved in the document file but will render properly only IF THE RENDERED DOCUMENT IS PDF
+\end{itemize}
+```
+In contrast, LateX math notation will render in either pdf or html
+
+$E = mc^{2}$
+
+### Code {#sec-Code}
+
+Code can be embedded into a document in chunks that are delineated by three "\`" on each end of the code along with the information for what type of code is being used within curly brackets:
+
+```{r}
+```
+
+R code can also be written inline within a single quotation mark on either side, to do a number of things like figure out that 5+5 equals `r 5+5`, such as here (see source).
+
+When you click the **Render** button above a document will be generated that includes both content and the output of embedded code.
+
+<!-- A star on each side of a text will render italics, two stars bold.  For more on markdown basic formatting see above basics-->
+
+```{r}
+
+1 + 1
+
+```
+
+To see the exact code toggle to the "source" button in the upper left corner.
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+
+2 * 2
+
+```
+
+The `echo: false` option disables the printing of code (only output is displayed when a document is rendered).
+
+```{=html}
+<!-- Some code chunk options
+Add a chunk option in {r chunk-name, name = value}
+hide message: message = FALSE 
+hide warning: warning = FALSE 
+hide all : include = FALSE 
+hide results : results = "hide" or results = FALSE
+
+One important difference between R Markdown documents and Quarto documents is that in Quarto chunk options are typically included in special comments at the top of code chunks rather than within the line that begins the chunk.  FOr more see [Quarto Computation](https://quarto.org/docs/computations/r.html)
+-->
+```
+You can also run analysis and display it in the report. Below are some descriptives from data on salaries in Indonesia.
+
+```{r}
+#| echo: false
+#| message: false
+
+library(stargazer)
+
+load("~/Dropbox/Classes/2023/729B/Quarto/quarto_workflow/Indo_salary.Rdata")
+
+stargazer(Indo_salary, type = "text", summary.stat = c("N","mean",  "sd","min", "max" ))
+```
+
+This especially useful if you are in the process of collecting data and/or experimenting with methods as the output will draw on the latest file each time you render the document and save the new version of the rendered document in your folder.
+
+### Figures {#sec-Figures}
+
+Quarto documents can also embed images contained in a specified folder.
+
+To add an image to a rendered document you can use the following markdown syntax:
+
+`![name of image](directory/image.png)`
+
+<!-- Did you notice how the above command ![name of image](directory/image.png) is enclosed between ` and `  in this way the command will print in the rendered document while not confusing quarto into thinking you are asking it to execute it -->
+
+![Data merger from Birnir and Satana 2022](test.png)
+
+The important thing to remember here is to make sure your picture is in a folder where quarto can find it.
+
+You can also embed ggplot figures, tables and the like in a quarto document using code chunks. For example, @fig-salary further explores the changes in salaries in Indonesia by Province over time
+
+```{r, fig.width=4,fig.height=4}
+#| label: fig-salary
+#| fig-cap: Indonesia salary by Province and Year
+#| warning: false
+#| echo: false
+
+library(ggplot2)
+
+ggplot(Indo_salary, aes(YEAR, SALARY)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")+
+  theme_classic()
+```
+
+For more see: [Quarto Chapter on Figures](https://quarto.org/docs/authoring/figures.html)
+
+# Assignment {#sec-Assignment}
+
+1: Download all the requisite software.
+
+2: Take 1 of your current projects (class or paper), that includes some figures and prefferrably some analysis and create a simple quarto file.
