@@ -8,7 +8,7 @@ number-sections: true
 
 ```{=html}
 <!-- Any notes to self not to be rendered in the final document can be placed in 
-in the text in this way -->
+in the text in this way.  Note to self:  This quarto tutorial builds on the github tutorial in that it creates a quarto project housed on github.  Then it goes through the creation of a quarto document.  Students will then be able to downloat the file and the source code from github.-->
 ```
 #### Packages
 
