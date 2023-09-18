@@ -16,6 +16,8 @@ in the text in this way -->
 
 Install and load the following packages for this tutorial
 
+I can write here a long test that is about someht
+
 library(tidyverse)
 
 ```{r}
@@ -157,7 +159,7 @@ You can also run analysis and display it in the report. Below are some descripti
 
 library(stargazer)
 
-load("~/Dropbox/Classes/2023/729B/Quarto/quarto_workflow/Indo_salary.Rdata")
+load("~/Dropbox/Classes/2023/729B/General/quarto_workflow/Indo_salary.Rdata")
 
 stargazer(Indo_salary, type = "text", summary.stat = c("N","mean",  "sd","min", "max" ))
 ```
