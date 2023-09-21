@@ -63,9 +63,10 @@ Did you also notice how we indented using | at the beginning of a line.  For mor
 ```
 # Getting started with Quarto {#sec-Getting_started}
 
-Begin by going to the Quarto webpage: [The Quarto Website](http://quarto.org). From there, download the version for your operating system.
 
-Once downloaded, go into your RStudio, then to preferences, then to the RMarkdown tab. Once there you can enable Quarto.
+(Begin by going to the Quarto webpage: [The Quarto Website](http://quarto.org). From there, download the version for your operating system.
+
+Once downloaded, go into your RStudio, then to preferences, then to the RMarkdown tab. Once there you can enable Quarto. QUARTO IS ALREADY INCLUDED WITH THE LATEST VERSION OF R-STUDIO)
 
 Once Quarto is enabled, you can create new Quarto documents by going to File\>New File\>Quarto Document.
 
@@ -161,6 +162,9 @@ library(stargazer)
 load("~/Dropbox/Classes/2023/729B/General/quarto_workflow/Indo_salary.Rdata")
 
 stargazer(Indo_salary, type = "text", summary.stat = c("N","mean",  "sd","min", "max" ))
+
+#ANOTHER OPTION AS STARGAZER IS NOT BEING MAINTAINED 
+
 ```
 
 This especially useful if you are in the process of collecting data and/or experimenting with methods as the output will draw on the latest file each time you render the document and save the new version of the rendered document in your folder.
