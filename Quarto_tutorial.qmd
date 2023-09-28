@@ -1,5 +1,5 @@
 ---
-title: "Basic quarto tutorial for 729B"
+title: "Quarto tutorial for 729B"
 author: "Birnir"
 format: html
 editor: source
@@ -163,7 +163,13 @@ load("~/Dropbox/Classes/2023/729B/General/quarto_workflow/Indo_salary.Rdata")
 
 stargazer(Indo_salary, type = "text", summary.stat = c("N","mean",  "sd","min", "max" ))
 
-#ANOTHER OPTION AS STARGAZER IS NOT BEING MAINTAINED 
+#ANOTHER OPTION AS STARGAZER IS NOT BEING MAINTAINED is modelsummary
+#See below Leo's code.  run before giving tutorial again
+#library(modelsummary)
+#Example of displaying model output in the Viewer pane in RStudio:
+#modelsummary(list(mx5,mx6,mx7,mx8), stars = c('*' = .05, '**' = .01, '***' = .001))
+#Example of generating Latex code for the same model output:
+#modelsummary(list(mx1,mx2,mx3,mx4,mx5,mx6,mx7,mx8), title="Logit Models of Civil War Onset and Incidence in State-SD Movement Dyads, 1991–2015", stars = c('*' = .05, '**' = .01, '***' = .001), output = "latex")
 
 ```
 
